@@ -17,7 +17,7 @@ Before proceeding, ensure you have the following:
 2. Run the following command to execute the installation script:
 
     ```bash
-    source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/make_install.sh)
+    source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/make_install)
     ```
 
   Ensure you are in your home directory (`$HOME`) when executing this command.
