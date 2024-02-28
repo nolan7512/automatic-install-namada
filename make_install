@@ -47,7 +47,7 @@ source $HOME/.bash_profile
 
 echo $(go version) && sleep 1
 
-source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/packets_depend.sh)
+source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/packets_depend)
 sudo apt-get install -y git-core libssl-dev pkg-config libclang-12-dev protobuf-compiler
 
 printGreen "4. Installing Rust & Cargo..." && sleep 1
