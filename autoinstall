@@ -1,14 +1,7 @@
+#!/bin/bash
+source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/header.sh)
 
-echo -e "\033[0;34m"
-echo "    A        DDDDDD        A       M       M      A      N       N"
-echo "   A:A       D      D     A:A      M M  M  M     A:A     N  N    N"
-echo "  A   A      D      D    A   A     M   M   M    A   A    N   N   N"
-echo " A:AAA:A     D      D   A:AAA:A    M       M   A:AAA:A   N    N  N"
-echo "A       A    DDDDDD    A       A   M       M  A       A  N       N"
-echo -e "\033[0;32m"
-echo -e "\t\t\t\t\t\t\tadamanlab.xyz"
-echo -e "\e[0m"
-
+printLogo
 
 read -p "Enter WALLET name:" WALLET
 echo 'export WALLET='$WALLET
@@ -20,13 +13,13 @@ read -p "Enter your PORT (for example 17,18,19... default port=26):" PORT
 echo 'export PORT='$PORT
 
 # set vars
-echo "export WALLET="$WALLET"" >> $HOME/.bash_profile_namada
-echo "export ALIAS="$ALIAS"" >> $HOME/.bash_profile_namada
-echo "export PORT="$PORT"" >> $HOME/.bash_profile_namada
-echo "export TM_HASH="v0.1.4-abciplus"" >> $HOME/.bash_profile_namada
-echo "export CHAIN_ID="shielded-expedition.88f17d1d14"" >> $HOME/.bash_profile_namada
-echo "export BASE_DIR="$HOME/.local/share/namada"" >> $HOME/.bash_profile_namada
-source $HOME/.bash_profile_namada
+echo "export WALLET="$WALLET"" >> $HOME/.bash_profile
+echo "export ALIAS="$ALIAS"" >> $HOME/.bash_profile
+echo "export PORT="$PORT"" >> $HOME/.bash_profile
+echo "export TM_HASH="v0.1.4-abciplus"" >> $HOME/.bash_profile
+echo "export CHAIN_ID="shielded-expedition.88f17d1d14"" >> $HOME/.bash_profile
+echo "export BASE_DIR="$HOME/.local/share/namada"" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 
 printLine
 echo -e "Alias:        \e[1m\e[32m$ALIAS\e[0m"
@@ -46,22 +39,15 @@ wget "https://golang.org/dl/go$VER.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$VER.linux-amd64.tar.gz"
 rm "go$VER.linux-amd64.tar.gz"
-[ ! -f ~/.bash_profile_namada ] && touch ~/.bash_profile_namada
-echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile_namada
-source $HOME/.bash_profile_namada
+[ ! -f ~/.bash_profile ] && touch ~/.bash_profile
+echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
+source $HOME/.bash_profile
 }
 [ ! -d ~/go/bin ] && mkdir -p ~/go/bin
 
 echo $(go version) && sleep 1
 
-addToPath
-
-
-printGreen "2. Updating packages..." && sleep 1
-sudo apt update
-
-printGreen "3. installing dependencies..." && sleep 1
-sudo apt install curl git wget htop tmux build-essential jq make lz4 gcc unzip -y
+source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/packets_depend)
 sudo apt-get install -y git-core libssl-dev pkg-config libclang-12-dev protobuf-compiler
 
 printGreen "4. Installing Rust & Cargo..." && sleep 1
