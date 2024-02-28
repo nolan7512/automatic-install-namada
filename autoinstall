@@ -10,17 +10,6 @@ echo -e "\t\t\t\t\t\t\tadamanlab.xyz"
 echo -e "\e[0m"
 
 
-#!/bin/bash
-function addToPath {
-  source $HOME/.bash_profile
-  PATH_EXIST=$(grep "${1}" $HOME/.bash_profile)
-  if [ -z "$PATH_EXIST" ]; then
-    echo "export PATH=\$PATH:${1}" >> $HOME/.bash_profile
-  fi
-}
-addToPath
-
-
 read -p "Enter WALLET name:" WALLET
 echo 'export WALLET='$WALLET
 read -p "Enter your ALIAS :" ALIAS
@@ -31,13 +20,13 @@ read -p "Enter your PORT (for example 17,18,19... default port=26):" PORT
 echo 'export PORT='$PORT
 
 # set vars
-echo "export WALLET="$WALLET"" >> $HOME/.bash_profile
-echo "export ALIAS="$ALIAS"" >> $HOME/.bash_profile
-echo "export PORT="$PORT"" >> $HOME/.bash_profile
-echo "export TM_HASH="v0.1.4-abciplus"" >> $HOME/.bash_profile
-echo "export CHAIN_ID="shielded-expedition.88f17d1d14"" >> $HOME/.bash_profile
-echo "export BASE_DIR="$HOME/.local/share/namada"" >> $HOME/.bash_profile
-source $HOME/.bash_profile
+echo "export WALLET="$WALLET"" >> $HOME/.bash_profile_namada
+echo "export ALIAS="$ALIAS"" >> $HOME/.bash_profile_namada
+echo "export PORT="$PORT"" >> $HOME/.bash_profile_namada
+echo "export TM_HASH="v0.1.4-abciplus"" >> $HOME/.bash_profile_namada
+echo "export CHAIN_ID="shielded-expedition.88f17d1d14"" >> $HOME/.bash_profile_namada
+echo "export BASE_DIR="$HOME/.local/share/namada"" >> $HOME/.bash_profile_namada
+source $HOME/.bash_profile_namada
 
 printLine
 echo -e "Alias:        \e[1m\e[32m$ALIAS\e[0m"
@@ -57,9 +46,9 @@ wget "https://golang.org/dl/go$VER.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$VER.linux-amd64.tar.gz"
 rm "go$VER.linux-amd64.tar.gz"
-[ ! -f ~/.bash_profile ] && touch ~/.bash_profile
-echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
-source $HOME/.bash_profile
+[ ! -f ~/.bash_profile_namada ] && touch ~/.bash_profile_namada
+echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile_namada
+source $HOME/.bash_profile_namada
 }
 [ ! -d ~/go/bin ] && mkdir -p ~/go/bin
 
