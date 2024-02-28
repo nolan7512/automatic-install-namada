@@ -1,4 +1,3 @@
-#!/bin/bash
 
 echo -e "\033[0;34m"
 echo "    A        DDDDDD        A       M       M      A      N       N"
@@ -11,7 +10,7 @@ echo -e "\t\t\t\t\t\t\tadamanlab.xyz"
 echo -e "\e[0m"
 
 
-
+#!/bin/bash
 function addToPath {
   source $HOME/.bash_profile
   PATH_EXIST=$(grep "${1}" $HOME/.bash_profile)
@@ -19,7 +18,6 @@ function addToPath {
     echo "export PATH=\$PATH:${1}" >> $HOME/.bash_profile
   fi
 }
-
 addToPath
 
 
