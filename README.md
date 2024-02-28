@@ -17,10 +17,9 @@ Before proceeding, ensure you have the following:
 2. Run the following command to execute the installation script:
 
     ```bash
-    source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/make_install)
+    source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/autoinstall)
     ```
 
-  Ensure you are in your home directory (`$HOME`) when executing this command.
   
 3. After running the script, the Namada logo will be displayed, and you will be prompted to provide the following information:
    
