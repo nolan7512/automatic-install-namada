@@ -1,7 +1,27 @@
 #!/bin/bash
-source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/header.sh)
 
-printLogo
+echo -e "\033[0;34m"
+echo "    A        DDDDDD        A       M       M      A      N       N"
+echo "   A:A       D      D     A:A      M M  M  M     A:A     N  N    N"
+echo "  A   A      D      D    A   A     M   M   M    A   A    N   N   N"
+echo " A:AAA:A     D      D   A:AAA:A    M       M   A:AAA:A   N    N  N"
+echo "A       A    DDDDDD    A       A   M       M  A       A  N       N"
+echo -e "\033[0;32m"
+echo -e "\t\t\t\t\t\t\tadamanlab.xyz"
+echo -e "\e[0m"
+
+
+
+function addToPath {
+  source $HOME/.bash_profile
+  PATH_EXIST=$(grep "${1}" $HOME/.bash_profile)
+  if [ -z "$PATH_EXIST" ]; then
+    echo "export PATH=\$PATH:${1}" >> $HOME/.bash_profile
+  fi
+}
+
+addToPath
+
 
 read -p "Enter WALLET name:" WALLET
 echo 'export WALLET='$WALLET
@@ -47,7 +67,14 @@ source $HOME/.bash_profile
 
 echo $(go version) && sleep 1
 
-source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/packets_depend)
+addToPath
+
+
+printGreen "2. Updating packages..." && sleep 1
+sudo apt update
+
+printGreen "3. installing dependencies..." && sleep 1
+sudo apt install curl git wget htop tmux build-essential jq make lz4 gcc unzip -y
 sudo apt-get install -y git-core libssl-dev pkg-config libclang-12-dev protobuf-compiler
 
 printGreen "4. Installing Rust & Cargo..." && sleep 1
