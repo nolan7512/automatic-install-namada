@@ -17,7 +17,9 @@ Before proceeding, ensure you have the following:
 2. Run the following command to execute the installation script:
 
     ```bash
-    source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/make_install.sh)
+    curl -o make_install.sh -sSL https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/make_install.sh
+    chmod +x make_install.sh
+    ./make_install.sh
     ```
 
   Ensure you are in your home directory (`$HOME`) when executing this command.
