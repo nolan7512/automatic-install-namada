@@ -1,44 +1,5 @@
 #!/bin/bash
-GREEN="\e[1m\e[1;32m" # green color
-RED="\e[1m\e[1;31m" # red color
-BLUE='\033[0;34m'   # blue color
-NC="\e[0m"          # no color
-
-function printLogo {
-echo -e "\033[0;34m"
-echo "    A        DDDDDD        A       M       M      A      N       N"
-echo "   A:A       D      D     A:A      M M  M  M     A:A     N  N    N"
-echo "  A   A      D      D    A   A     M   M   M    A   A    N   N   N"
-echo " A:AAA:A     D      D   A:AAA:A    M       M   A:AAA:A   N    N  N"
-echo "A       A    DDDDDD    A       A   M       M  A       A  N       N"
-echo -e "\033[0;32m"
-echo -e "\t\t\t\t\t\t\tadamanlab.xyz"
-echo -e "\e[0m"
-}
-
-function printLine {
-  echo "------------------------------------------------------------------------------------"
-}
-
-function printGreen {
-  echo -e "${GREEN}${1}${NC}"
-}
-
-function printRed {
-  echo -e "${RED}${1}${NC}"
-}
-
-function printBlue {
-  echo -e "${BLUE}${1}${NC}"
-}
-
-function addToPath {
-  source $HOME/.bash_profile
-  PATH_EXIST=$(grep "${1}" $HOME/.bash_profile)
-  if [ -z "$PATH_EXIST" ]; then
-    echo "export PATH=\$PATH:${1}" >> $HOME/.bash_profile
-  fi
-}
+source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/header.sh)
 
 printLogo
 
@@ -86,54 +47,7 @@ source $HOME/.bash_profile
 
 echo $(go version) && sleep 1
 
-
-GREEN="\e[1m\e[1;32m" # green color
-RED="\e[1m\e[1;31m" # red color
-BLUE='\033[0;34m'   # blue color
-NC="\e[0m"          # no color
-
-function printLogo {
-echo -e "\033[0;34m"
-echo "    A        DDDDDD        A       M       M      A      N       N"
-echo "   A:A       D      D     A:A      M M  M  M     A:A     N  N    N"
-echo "  A   A      D      D    A   A     M   M   M    A   A    N   N   N"
-echo " A:AAA:A     D      D   A:AAA:A    M       M   A:AAA:A   N    N  N"
-echo "A       A    DDDDDD    A       A   M       M  A       A  N       N"
-echo -e "\033[0;32m"
-echo -e "\t\t\t\t\t\t\tadamanlab.xyz"
-echo -e "\e[0m"
-}
-
-function printLine {
-  echo "------------------------------------------------------------------------------------"
-}
-
-function printGreen {
-  echo -e "${GREEN}${1}${NC}"
-}
-
-function printRed {
-  echo -e "${RED}${1}${NC}"
-}
-
-function printBlue {
-  echo -e "${BLUE}${1}${NC}"
-}
-
-function addToPath {
-  source $HOME/.bash_profile
-  PATH_EXIST=$(grep "${1}" $HOME/.bash_profile)
-  if [ -z "$PATH_EXIST" ]; then
-    echo "export PATH=\$PATH:${1}" >> $HOME/.bash_profile
-  fi
-}
-
-printGreen "2. Updating packages..." && sleep 1
-sudo apt update
-
-printGreen "3. installing dependencies..." && sleep 1
-sudo apt install curl git wget htop tmux build-essential jq make lz4 gcc unzip -y
-
+source <(curl -s https://raw.githubusercontent.com/nolan7512/automatic-install-namada/main/unit/packets_depend.sh)
 sudo apt-get install -y git-core libssl-dev pkg-config libclang-12-dev protobuf-compiler
 
 printGreen "4. Installing Rust & Cargo..." && sleep 1
